@@ -1,0 +1,7 @@
+Options -MultiViews
+
+RewriteEngine On
+
+RewriteRule ^(app\/assets|public) - [L]
+
+RewriteRule ^ index.php [QSA,L]

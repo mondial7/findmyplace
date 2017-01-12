@@ -1,0 +1,90 @@
+{# 
+ # Form components
+ #}
+
+{% macro input( node ) %}
+	
+	{% if node.wrap %}
+
+	<div class="{{ node.wrap }}">
+
+	{% endif %}
+
+		{% if node.label %}
+		
+		<label>{{ node.label }}</label>
+		
+		{% endif %}
+
+		<input type="{{ node.type }}" name="{{ node.name }}" 
+		       id="{{ node.id }}" value="{{ node.value }}" 
+		       placeholder="{{ node.placeholder }}"
+			   {% if node.required %}required{% endif %}>
+
+	{% if node.wrap %}
+		
+	</div>
+
+	{% endif %}
+
+{% endmacro %}
+
+
+{% macro select( node ) %}
+	
+	{% if node.wrap %}
+
+	<div class="{{ node.wrap }}">
+
+	{% endif %}
+
+		{% if node.label %}
+		
+		<label>{{ node.label }}</label>
+		
+		{% endif %}
+
+		<select name="{{ node.name }}" id="{{ node.id }}" {% if node.required %}required{% endif %}>
+			
+			{% for item in node.options %}
+
+			<option value="{{ item.value }}">{{ item.label }}</option>
+
+			{% endfor %}
+		
+		</select>
+
+	{% if node.wrap %}
+		
+	</div>
+
+	{% endif %}
+
+{% endmacro %}
+
+
+{% macro textarea( node ) %}
+
+	{% if node.wrap %}
+
+	<div class="{{ node.wrap }}">
+
+	{% endif %}
+
+		{% if node.label %}
+		
+		<label>{{ node.label }}</label>
+		
+		{% endif %}
+
+		<textarea name="{{ node.name }}" id="{{ node.id }}" 
+		          placeholder="{{ node.placeholder }}"
+				  {% if node.required %}required{% endif %}>{{ node.value }}</textarea>
+
+	{% if node.wrap %}
+		
+	</div>
+
+	{% endif %}
+
+{% endmacro %}

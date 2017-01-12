@@ -1,0 +1,56 @@
+{% extends 'page__base.twig' %}
+
+{% block main %}
+
+<style type="text/css">
+.call_to_action { display:inline-block;color:white;background-color:#cf2a26;padding:15px;margin:80px auto;text-decoration:none; transition: all 300ms; }
+.call_to_action_top { position: absolute; top: 40px; left: 40px; display: none; color:white; background-color:#cf2a26;padding:15px; text-decoration:none; transition: all 300ms; z-index: 1}
+.call_to_action:hover,
+.call_to_action_top:hover { background: #fff; color: #cf2a26; }
+.home__landing_content--mobile { display: none; margin-top: 80px; font-size: 32px }
+@media (max-width: 1150px) {
+	.home__landing_content { display: none }
+	.home__landing_content--mobile { display: block }
+	.call_to_action { margin-top: 10px; }
+}
+@media (min-width: 550px) and (max-width: 1150px) {
+	.call_to_action_top { display:inline-block; }
+}
+</style>
+
+
+<main>
+
+	<section class="home__landing">
+
+		<a href="places/" class="call_to_action_top">OPEN THE MAP</a>
+
+		<div class="home__landing_overlay">
+			<div class="home__landing_overlay_content home__landing_overlay_content--left"></div>
+			<div class="home__landing_overlay_content home__landing_overlay_content--right"></div>
+		</div>
+
+		<img class="home__landing_background" src="public/collage.jpg" />
+
+		<div class="home__landing_content">
+			<p class="toright">YOUR<br>INVOLVEMENT</p>
+			<p class="toleft">MAKES<br>THE DIFFERENCE</p>
+		</div>
+
+	</section>
+
+
+	<section style="text-align:center">
+
+		<div class="home__landing_content--mobile">
+			<p>YOUR INVOLVEMENT</p>
+			<p>MAKES THE DIFFERENCE</p>
+		</div>
+
+		<a href="places/" class="call_to_action">OPEN THE MAP</a>
+
+	</section>
+
+</main>
+
+{% endblock %}

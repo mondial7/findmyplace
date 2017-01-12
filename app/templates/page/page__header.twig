@@ -1,0 +1,43 @@
+{% import 'components/navigation.twig' as nav %}
+
+{% include 'page__loading_screen.twig' ignore missing %}
+
+<header style="background-color: rgba(255,255,255,0.9)">
+
+	<div class="logo">
+    	<a href="" title="Home - Find My Place">
+        	<img alt="Find My Place" src="app/assets/logos/findmyplace.svg" />
+    	</a>
+    </div>
+
+    <nav class="menu">
+
+    	<div id="mobile_menu__button" class="mobile_menu__button" onclick="FMP.layout.toggleMobileMenu()">
+    		<div></div>
+            <div></div>
+            <div></div>
+    	</div>
+
+    	<ul class="menu_list menu_list--hide" id="menu_list" data-mobile="0">
+
+            {% for item in menu %}
+
+                {{ nav.link( item ) }}
+
+            {% endfor %}
+
+
+
+            {% if submenu is defined and submenu %}
+
+                {{ nav.submenu( sess, submenu ) }}
+
+            {% endif %}
+
+		</ul>
+
+    </nav>
+        
+    <div class="header_separator"></div>
+
+</header>

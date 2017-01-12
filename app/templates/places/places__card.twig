@@ -1,0 +1,33 @@
+{% for card in places %}
+
+	{% if card.account_id == sess.id %}
+		{% set extra_classname = "my_card" %}
+	{% endif %}
+	
+	{# TEMP: set image placeholder #}
+	{% set img_default = random(['apple', 'orange', 'citrus', 'blue', 'green']) ~ ".jpg" %}
+
+	<div class="places__card card_{{ card.ownership }} card_{{ card.status }}" id="card__{{ card.id }}">
+
+		<div class="places__card__pics">
+			<img src="public/{{ card.image|default(img_default) }}" alt="{{ card.address }}"
+				 onclick="FMP.places.showPlace({{ card.id }})" style="cursor:pointer">
+		</div>
+
+		<div class="places__card__details">
+			<p class="places__card__address">{{ card.address }}</p>
+			<p class="places__card__labels">
+				<span>{{ card.ownership }}</span>
+				<span>{{ card.status }}</span>
+			</p>
+			<p class="marker__more">
+				<span onclick="FMP.places.showPlace({{ card.id }})">More info</span>
+				{% if card.account_id == sess.id %}
+					<span onclick="FMP.places.delete({{ card.id }},'{{ card.address }}')" style="float:right">Delete</span>					
+				{% endif %}
+			</p>
+		</div>
+
+	</div>
+
+{% endfor %}

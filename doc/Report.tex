@@ -1,0 +1,118 @@
+\documentclass[12pt,letterpaper, onecolumn]{article}
+
+\usepackage{datetime}
+\usepackage{graphicx}
+\usepackage{blindtext}
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{wrapfig}
+\hypersetup{colorlinks, linkcolor={red!50!black}, citecolor={blue!50!black}, urlcolor={blue!80!black}}
+
+\author{Andriy Tyyko, Marco Mondini, Luca Sabiucciu}
+\title{\Huge{Find my Place}\\ \Large{{\it }}}
+\date{\today}
+
+\pagestyle{fancy}
+
+\lhead{}
+\rhead{Internet and Mobile Services, a.c 2016/2017}
+
+\renewcommand{\headrulewidth}{0pt}
+
+\begin{document}
+%	\lstset{language=set language}
+% Title
+	\begin{titlepage}
+		\begin{minipage}{0.5\textwidth}
+			\begin{flushleft}
+				\includegraphics[scale=0.5]{Images/faculty_logo.jpg}
+			\end{flushleft}
+		\end{minipage}
+		\begin{minipage}{0.5\textwidth}
+			\begin{flushright}
+				\includegraphics[scale=0.3]{Images/unibz_logo.JPG}
+			\end{flushright}
+		\end{minipage}
+		\vspace{3.5cm}
+		\begin{center}
+			{\Large Project Technical Report}
+			\vspace{1cm} \\
+			{\huge Find my Place}
+			\vspace{0.5cm}\\
+			{\Large  }
+			\vspace{3cm}
+			\begin{tabular}{p{0.25\textwidth} p{0.6\textwidth}}
+				\hline \\[-1em]
+				Author & Andriy Tyyko\textsuperscript{1}, Marco Mondini\textsuperscript{2}, Luca Sabiucciu\textsuperscript{3} \tabularnewline
+				\hline \\[-1em]
+				Course & Internet and Mobile Services \tabularnewline 
+				\hline \\[-1em]
+				Institution & Free University of Bolzano \tabularnewline
+				\hline \\[-1em]
+				Academic Year & a.c. 2016/2017 - Winter Semester \tabularnewline
+				\hline \\[-1em]
+				Contact &  \textsuperscript{1}\href{mailto:andriy.tyyko@stud-inf.unibz.it}{andriy.tyyko@stud-inf.unibz.it} \newline 
+				\textsuperscript{2}\href{mailto:marco.mondini@stud-inf.unibz.it}{marco.mondini@stud-inf.unibz.it} \newline 
+				\textsuperscript{3}\href{mailto:luca.sabiucciu@stud-inf.unibz.it}{luca.sabiucciu@stud-inf.unibz.it} \tabularnewline 
+				\hline \\[-1em]
+				Last update & {\today} \tabularnewline 
+				\hline \\[-1em]
+			\end{tabular}
+		\end{center}
+		\vfill
+		\footnotesize
+		{\bf Note:}
+		\newline
+		The project has been developed for the Internet and Mobile Services course of the Faculty of Computer Science, Free University of Bolzano. The material does not come with any warranty and we do not assume any responsability for any damage caused by the material.
+%		The project has been developed for the Formal Languages and Compilers course of the Faculty of Computer Science, Free University of Bolzano. It is not yet covered under a license, but the principle is the one behind the \href{https://creativecommons.org/licenses/by-nc/4.0/legalcode}{CC BY-NC 4.0} license. That is, you are free to share the material in any medium or format and to adapt it, but the appropriate credit has to be given, if changes are made they have to be indicated and the material can not be used for commercial purpose. The material has no warranty and we do not assume any responsability for damages due to the material. 
+	\end{titlepage}
+% End of the title
+
+% Table of contents
+	\hypersetup{colorlinks, linkcolor={black!50!black}, citecolor={blue!50!black}, urlcolor={blue!80!black}}
+	\renewcommand{\thepage}{\roman{page}}
+	\thispagestyle{empty}
+	\tableofcontents
+	\newpage	
+% End of table of contents
+
+% Start of the report	
+	\hypersetup{colorlinks, linkcolor={red!50!black}, citecolor={red!50!black}, urlcolor={blue!80!black}}
+	\renewcommand{\thepage}{\arabic{page}}
+	\setcounter{page}{1}
+
+	\section{Introduction}
+	\subsection{Choice of the Project}
+		\lipsum
+	\section{MVC Design Pattern}
+	\subsection{Model Pattern}
+	\subsection{View Pattern}
+	\subsection{Controller Pattern}
+		\lipsum
+	\section{Evaluation}
+	\subsection{Testing}
+		\lipsum
+	\section{Conclusions}
+	\subsection{Conclusions}
+	\subsection{Final Remarks and Possible Extensions}
+		\lipsum
+% End of the report
+	
+% Start of the bibliography\
+	\newpage
+	% Removes header and footer
+	\lhead{}
+	\rhead{}
+
+	\begin{thebibliography}{1}
+
+	\bibitem{citation name} the reference
+	
+	\end{thebibliography}
+% End of the bibliography
+
+\end{document}

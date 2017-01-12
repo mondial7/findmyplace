@@ -1,0 +1,80 @@
+@import 'general';
+
+main {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.about__longtext {
+	$longtext-width: 900px;
+	$default-margin: 15px;
+
+	position: relative;
+	width: 100%;
+	padding: 20px 0px;
+	z-index: 1 !important;
+	background-color: #fff;
+
+	padding: 0px $page-lateral-padding;
+
+	&_titlerow {
+		position: relative;
+		left: -40px;
+		padding: 40px 0px;
+
+		> span {
+			display: inline-block;
+			background: $color-red;
+			color: white;
+			font-size: 45px;
+			font-weight: 400;
+			margin: 0px;
+			padding: 20px;
+		}
+
+	}
+
+	&_content {
+		margin: $default-margin auto;
+		font-size: 22px;
+		width: 90%;
+		max-width: $longtext-width;
+
+		&--first {
+			padding-top: 80px;
+		}
+
+		&--last {
+			padding-bottom: 80px;
+		}
+
+		&--fullwidth {
+			width: 100%;
+			max-width: 4000px
+		}
+
+		&--subsubtitle {
+			font-weight: 900;
+			margin-top: $default-margin * 3;
+		}
+
+	}
+
+	&_subtitle {
+		font-weight: 900;
+		font-size: 18px;
+		padding: 20px 0px;
+
+		> span {
+			display: inline-block;
+
+			&:after {
+				content: "";
+				display: block;
+				background-color: $color-red;
+				height: 3px
+			}
+		}
+	}
+
+}

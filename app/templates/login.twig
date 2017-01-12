@@ -1,0 +1,23 @@
+{% extends 'page__base.twig' %}
+
+{% block main %}
+
+<main>
+
+	{% if reset_password %}
+		
+		<h1>Reset Password</h1>
+
+		{% include './login/login__reset_password.twig' ignore missing %}
+
+	{% else %}
+
+		<h1>Login</h1>
+
+		{% include './login/login__form.twig' ignore missing %}
+		
+	{% endif %}
+
+</main>
+
+{% endblock %}

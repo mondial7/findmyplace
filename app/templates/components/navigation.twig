@@ -1,0 +1,42 @@
+{# 
+ # Nav menu components
+ #}
+
+
+{% macro link( item, style = 'menu_link--top' ) %}
+	
+	<li class="{{ style }} {{ item.active_class }}">
+        <a href="{{ item.link }}" 
+           {% if item.link_class %} class="{{ item.link_class }}" {% endif %}
+           title="{{ item.label }}">{{ item.label|upper }}</a>
+    </li>
+
+{% endmacro %}
+
+
+{% macro submenu( sess, submenu ) %}
+
+	{% import _self as nav %}
+	
+	<li class="menu_link submenu_trigger">
+        {% set avatar = sess.avatar ?: "avatar.svg" %}
+		<div class="menu_profile_picture" 
+             style="background-image: url('app/assets/pics/people/{{ avatar }}')">
+			<a href="people/?user_id={{ sess.id }}">
+                <div class="role_filter--{{ sess.role }}"></div>
+            </a>
+		</div> 
+
+		<ul class="submenu">
+            
+            {% for item in submenu %}
+
+            	{{ nav.link( item ) }}
+
+            {% endfor %}
+
+		</ul>
+	
+	</li>
+
+{% endmacro %}

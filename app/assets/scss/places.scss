@@ -1,0 +1,386 @@
+@import 'general';
+
+main {
+	padding: 0px;
+	height: 100%;
+	overflow: hidden;
+}
+
+$map-margin: 100px;
+
+.places {
+
+	&__container {
+		position: relative;
+		width: 100%;
+		height: 100%;
+
+		&--list_visible {
+			
+			.places__list__cards {
+				overflow-y: scroll;
+				overflow-x: hidden;				
+			}
+		}
+	
+		&--switch > .places__map {
+			transform: translateX( calc( 100% ) );
+
+			> .overlay__switch {
+				display: block !important;
+			}
+
+		}
+
+		&--switch > .places__list {
+			transform: translateX( 0px );
+
+			> .overlay__switch {
+				display: none !important;
+			}
+		}
+
+		.overlay__switch {
+			z-index: 9999999;
+			position: absolute;
+			top: 0px;
+			width: $map-margin;
+			background-color: rgba(200,200,200,0.2);
+		    @extend .display_flex_column;
+		    height: 100%;
+		    @include transition($transition-time);
+		    cursor: pointer;
+			
+			&:hover {
+				background-color: rgba(100,100,100,0.3);
+			}
+
+			&__content {
+				display: block;
+				color: $color-red;
+		        @extend .display_flex_vertical_aligner;
+		        height: 100%;
+		        text-align: center;
+				font-size: 40px;
+				padding: 15px;
+				flex: 1;
+			}
+
+		}
+
+	}
+
+	&__list,
+	&__map {
+		position: absolute;
+		display: inline-block;
+		height: 100%;
+		width: calc( 100% - #{$map-margin} );
+		@include transition($transition-time);
+	}
+
+	&__list {
+		background: white;
+		transform: translateX( calc( #{$map-margin} - 100% ) );
+
+		> .overlay__switch {
+			right: 0px;
+			display: block;
+		}
+
+		&__cards {
+			position: relative;
+			border: 2px solid $color-red;
+			border-bottom: none;
+			border-left: none;
+			height: 100%;
+		}
+
+	}
+
+	&__map {
+		background: #fbfbfb;
+		transform: translateX( #{$map-margin} );
+
+		> .overlay__switch {
+			left: 0px;
+			display: none;
+		}
+
+	}
+
+}
+
+google-map {
+
+	width: 100%;
+	height: 100%;
+
+}
+
+footer {
+	display: none
+}
+
+.new_place,
+.place {
+
+	&__modal {
+		@extend .faraway;
+	    	    transform: translateY(-150%);
+	    -webkit-transform: translateY(-150%);
+		background-color: #fff;
+
+		&--visible {
+			@extend .not_faraway;
+		}
+
+		&_close {
+			
+			position: absolute;
+			top: 30px;
+			right: 30px;
+			color: #000;
+			font-size: 50px;
+			line-height: 50px;
+			height: 50px;
+			width: 50px;
+			text-align: center;
+			font-weight: 200;
+			cursor: pointer;
+			@include transition($transition-time);
+
+			&:hover {
+				color: #999;
+			}
+
+		}
+
+	}
+
+}
+
+.place__modal--visible {
+	top: $header-height;
+	height: calc(100% - #{$header-height});
+}
+
+.new_place {
+
+	&_modal {
+
+		&_content {
+			position: relative;
+		    -webkit-box-flex: 0;
+		    -webkit-flex: none;
+		    -ms-flex: none;
+		    flex: none;
+
+		    text-align: left;
+		    width: 100%;
+		    max-width: 900px;
+		    z-index: 1
+		}
+
+	}
+
+	&__trigger {
+		position: absolute;
+		right: 10px;
+		bottom: 15px;
+		padding: 5px;
+		z-index: 1;
+		height: 70px;
+		cursor: pointer;
+		text-align: center;
+	    background: rgba(248,248,248,0.7);
+	    border-radius: 20%;
+	    border: 2px $color-red solid;
+		@include transition($transition-time);
+
+		&:hover {
+			background: rgba(248,248,248,0.9);
+
+			> img {				
+				top: -15px;
+			}
+
+		}
+
+		> span {
+			font-size: 14px;
+			width: 63px;
+		}
+
+		> img,
+		> span {
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		> img {
+			@include transition($transition-time);
+			position: relative;
+			top: 0px;
+			width: 30px;
+		}
+
+	}
+
+}
+
+
+.places__card {
+	position: relative;
+	display: inline-block;
+    margin: 20px;
+    font-size: 12px;
+    width: 251px;
+    vertical-align: top;
+
+    &--target {
+
+    }
+
+	&__pics {
+
+		> img {
+			max-width: 250px;
+			max-height: 250px;
+		}
+
+	}
+
+	&__labels {
+
+		font-size: 14px;
+
+		> span {
+			padding: 4px;
+			border: 1px solid $color-red;
+		}
+
+	}
+}
+
+.marker {
+
+	&__pic {
+		max-width: 100px;
+		max-height: 100px;
+		display: inline-block;
+	}
+
+	&__address {
+		display: inline-block;
+		max-width: 100px;
+		vertical-align: top;
+		padding-left: 5px;
+	}
+
+	&__more {
+		
+		> span {
+			position: relative;
+			display: inline-block;
+			cursor: pointer;
+
+			&:after {
+				content: "";
+				display: block;
+				height: 2px; 
+				background-color: $color-red;
+				width: 100%;
+			}
+		}
+	}
+
+
+}
+
+
+
+.new_place__modal_content {
+
+	text-align: center;
+
+	form {
+
+		display: inline-block;
+		text-align: left;
+		font-weight: 400;
+		font-size: 14px;
+
+		h1 {
+			font-size: 60px;
+			font-weight: 200;
+			margin: 0px;
+
+			img {
+				width: 50px;
+				margin-right: 20px;
+				display: inline-block;
+				vertical-align: bottom;
+			}
+		}
+
+		label {
+			display: inline-block;
+			vertical-align: bottom;
+			font-size: 20px;
+			margin-right: 10px;
+		}
+
+		> div {
+
+			position: relative;
+			padding: 15px 0px;
+			height: auto;
+			overflow: hidden;
+
+			> span {
+				display: inline-block;
+				padding: 4px 10px;
+				border: 1px solid $color-red;
+				vertical-align: bottom;
+				cursor: pointer;
+				@include transition($transition-time);
+
+				&.selected {
+					background-color: $color-red;
+					color: white;
+				}
+
+			}
+
+		}
+
+		#address {
+			border: none !important;
+			border-bottom: 1px solid $color-red !important;
+			width: 400px;
+		}
+
+		textarea {
+			display: block;
+			width: 100%;
+		}
+
+		#submit {
+			float: right;
+			padding: 15px 25px;
+			font-size: 20px;
+			border: 1px solid $color-red;
+			cursor: pointer;
+			@include transition($transition-time);
+
+			&:hover {
+				background-color: $color-red;
+				color: white;
+			}
+		}
+
+	}
+
+
+}

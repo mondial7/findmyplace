@@ -1,0 +1,274 @@
+@import 'general';
+
+
+$image-width: 1920px;
+$image-height: 1080px;
+$image-ratio: $image-width / $image-height;
+
+$video-height: 768px;
+$video-ratio: 16/9;
+
+main {
+	position: relative;
+	padding: 0px;
+
+	> section {
+		position: relative;
+	    height: auto;
+	    overflow: hidden;
+	    padding: 0px $page-lateral-padding;
+	    z-index: 1;
+	    background-color: #fff;
+
+		&.home__video {
+			padding: 0px;
+		}
+
+	}
+}
+
+
+.home__landing {
+	position: relative;
+	padding: 0px !important;
+
+	&_background {
+		width: 100%;
+	}
+
+	&_overlay {
+		position: absolute;
+		left: 0px; right: 0px;
+		height: 100%;
+		width: 100%;
+		text-align: center;
+		font-size: 0px;
+
+		&_content {
+			display: inline-block;
+			width: 50%;
+			height: 100%;
+
+			&--left {
+				background: rgba(30, 30, 30, 0.8);
+			}
+
+			&--right {
+				background: rgba(30, 30, 30, 0.5);
+			}
+
+		}
+
+	}
+
+	&_content {
+		position: absolute;
+		top: 180px; left: 0px;
+		width: 100%;
+		text-align: center;
+		font-size: 0px;
+
+		$font-size: 70px;
+
+		> p {
+			display: inline-block;
+			width: 50%;
+			line-height: $font-size;
+			font-size: $font-size !important;
+			font-weight: 200;
+			color: white;
+		}
+
+		> p.toleft {
+			position: relative;
+			top: $font-size * 2;
+			text-align: left;
+		}
+
+		> p.toright {
+			text-align: right;
+		}
+
+	}
+
+}
+
+
+
+
+.home__video {
+	padding-top: 120px !important;
+
+	#landing_video {
+		position: relative; 
+		display: block;
+		margin: auto;
+		margin-top: 80px;
+		height: 501px;
+		width: 900px;
+		/*height: $video-height * 3/5;
+		width: 60%;
+		max-width: $video-height * $video-ratio ;
+		min-width: 300px;*/
+	}
+
+}
+
+
+
+.home__quote {
+
+	&_text {
+		margin: 350px auto;
+		font-size: 28px;
+		width: 1024px;
+		font-weight: 400;
+
+		> img {
+			width: 100px; 
+			margin: -5px;
+			margin-right: 10px;
+		}
+
+		&--second {
+
+			> img {
+				width: 48px;
+			}
+
+		}
+
+	}
+
+	&_reference {
+		margin-top: 180px;
+		font-size: 15px;
+		float: right;
+
+		> a {
+			color: #000;
+		}
+	}
+
+}
+
+.home__longtext {
+
+	$longtext-width: 900px;
+
+	padding-top: 100px !important;
+	width: 100%;
+	padding: 20px 0px;
+
+	&_titlerow {
+
+		> span {
+			display: inline-block;
+			background: $color-red;
+			color: white;
+			font-size: 48px;
+			font-weight: 400;
+			margin: 0px;
+			padding: 20px;
+		}
+
+	}
+
+	&_content {
+		margin: 15px auto;
+		font-size: 22px;
+		width: 90%;
+		max-width: $longtext-width;
+
+		&--first {
+			padding-top: 80px;
+		}
+
+		&--last {
+			padding-bottom: 80px;
+		}
+
+	}
+
+}
+
+
+.home__howto {
+
+	&_title_ico {
+		background-image: url('../../../public/pin red.svg');
+		background-repeat: no-repeat;
+		display: inline-block;
+		width: 40px;
+		height: 60px;
+		vertical-align: bottom;
+	}
+
+	> h3 {
+		font-size: 42px; 
+		margin: 10px !important; 
+		font-weight: 400
+	}
+
+	> h4 {
+		font-size: 24px; 
+		margin: 10px !important; 
+		font-weight: 900
+	}
+
+}
+
+.home__description {
+	position: relative;
+	height: 700px;	
+
+	&__pics {
+		position: relative;
+
+		> img {
+			position: absolute;
+		}
+
+	}
+
+	#bk_1 {
+		width: 500px;
+		top: 0px;
+		left: 0px;
+	}
+
+	#bk_2 {
+		width: 400px;
+		top: 140px;
+		left: 400px;
+	}
+
+	#bk_3 {
+		width: 500px;
+		top: 330px;
+		left: 0px;
+	}
+
+	#bk_4 {
+		width: 500px;
+		top: 390px;
+		left: 470px;
+	}
+
+	&__text {
+		position: relative;
+
+		&_content {
+			position: absolute;
+			top: 0px;
+			right: 100px;
+			width: 420px;
+
+			> p {
+				margin-top: 0px;
+			}
+
+		}
+	}
+
+}

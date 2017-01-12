@@ -1,0 +1,77 @@
+<style type="text/css">
+.place__modal_content > div { margin-right: 20px; margin-left: 20px }
+.place__modal_close { margin: 0px !important }
+.place__modal__address { margin-top: 80px }
+.place__modal__label { font-weight: bold }
+.place__modal__p > span { display: inline-block; min-width: 150px }
+#project_form { display: block; max-width: 500px }
+#project_form > input[type=text],
+#project_form > textarea { display: block; width: 100%; max-width: 100%; margin-bottom: 10px; padding: 5px;}
+#project_form > textarea { border: 1px solid #cf2a26; max-height: 300px }
+#project_form > input[type=submit] { background-color: #fff; border: 1px solid #000; color: #000; transition: all 300ms; padding: 5px 10px }
+#project_form > input[type=submit]:hover { background-color: #cf2a26; color: #fff; border: 1px solid #cf2a26 }
+.place_project { padding: 5px 2px; margin-bottom: 20px}
+.place_project.my_project { background-color: #f9f9f9; }
+.place_project > p > span { font-weight: bold; display: block }
+.project_delete__btn { display: inline-block; background-color: #333; padding: 3px; color: #f2f2f2; cursor: pointer;}
+@media (max-width: 990px) {
+	.place__modal--visible { top: 45px; height: calc(100% - 45px) }
+}
+@media (max-width: 750px) {
+	.place__modal__label { margin-bottom: 10px }
+	.place__modal_close { right: 0px; top: 5px }
+	.place__modal__address { margin-top: 55px }
+	.place__modal_content > div { margin-right: 15px; margin-left: 15px }
+}
+</style>
+
+<div class="place__modal_content">
+
+	<div class="place__modal_close">
+		<span>x</span>
+	</div>
+
+	<div class="place__modal__address">
+		<p class="place__modal__p"><span class="place__modal__label">Address</span><span id="place_address"></span></p>
+	</div>
+
+	<div class="place__modal__date">
+		<p class="place__modal__p"><span class="place__modal__label">Published</span><span id="place_date"></span></p>
+	</div>
+
+	<div class="place__modal__labels">
+		<p class="place__modal__p"><span class="place__modal__label">Ownership</span><span id="place_ownership"></span></p>
+		<p class="place__modal__p"><span class="place__modal__label">Status</span><span id="place_status"></span></p>
+	</div>
+
+	<div class="place__modal__about">
+		<p class="place__modal__p"><span class="place__modal__label">About</span><span id="place_about"></span></p>
+	</div>
+
+	<div class="place__modal__projects" id="place_projects">
+		
+		<h4>Projects</h4>
+
+		{% if userLogged %}
+			
+			<div class="place_projects__form">
+				<form id="project_form">
+					
+					<input type="hidden" value="" id="project_place_id" />
+					<input type="text" placeholder="Project title (optional)" id="project_title" />
+					<textarea placeholder="Project description (required)" id="project_about" required></textarea>
+
+					<input type="submit" id="submit_project" value="Publish"/>
+				
+				</form>
+			</div>
+
+		{% endif %}
+
+		<div class="place_projects__list">
+			{# here will be filled with projects by js #}
+		</div>
+
+	</div>
+
+</div>

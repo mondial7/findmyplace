@@ -1,0 +1,120 @@
+{% extends 'page__base.twig' %}
+
+{% block main %}
+
+<main>
+
+	<script type="text/javascript">
+		Page = {{ '{' }} isMap : true {{ '}' }};
+		Page.USER_ID = {{ sess.id|default('null') }};
+		Page.userLogged = {{ userLogged|default('false') }};	
+	</script>
+
+	<style type="text/css">
+	
+	.overlay__switch__mobile {
+		display: none;
+		position: fixed;
+		top: 70px;
+		padding: 3px;
+		border: 1px solid #cf2a26;
+		cursor: pointer;
+	}
+	.overlay__switch__mobile > img {
+		width: 25px;
+	}
+	.overlay__switch__mobile--list {
+		left: 20px
+	}
+	.overlay__switch__mobile--map {
+		right: 20px
+	}
+
+	@media (max-width: 750px){ 
+		main { padding-top: 50px !important }
+		.overlay__switch { display: none }
+		.places__container--switch > .overlay__switch__mobile--map { display: block !important; z-index: 1 }
+		.places__container > .overlay__switch__mobile--list { display: block !important; z-index: 1 }
+		.places__container--switch > .overlay__switch__mobile--list { display: none !important }
+		.places__list { transform: translateX(100%) !important }
+		.places__list, .places__map { width: 100% !important }
+		.places__map { transform: translateX(0) !important }
+		.places__container--switch > .places__list { transform: translateX(0px) !important }
+		.places__container--switch > .places__map { transform: translateX(100%) !important }
+	}
+
+	</style>
+
+	<div class="places__container" id="places__container">
+
+		<div class="overlay__switch__mobile overlay__switch__mobile--list" onclick="FMP.layout.showList()">
+			<img src="public/arrows.svg" alt="arrow">
+		</div>
+
+		<div class="overlay__switch__mobile overlay__switch__mobile--map" onclick="FMP.layout.showMap()">
+			<img src="public/arrows.svg" alt="arrow" style="transform:rotate(180deg)">
+		</div>
+
+		<section class="places__list">
+
+			{% if userLogged %}
+				{% include './places/places__list_header.twig' ignore missing %}
+			{% endif %}
+
+			<div class="overlay__switch" onclick="FMP.layout.showList()">
+				<div class="overlay__switch__content">
+					<img src="public/arrows.svg" style="width:40px">
+				</div>     	
+			</div>
+
+			<div class="places__list__cards" id="place_cards">
+				{% include './places/places__card.twig' ignore missing %}
+			</div>
+
+		</section>
+
+		<section class="places__map">
+			
+			<div class="overlay__switch" 
+			     onclick="FMP.layout.showMap()">
+				<div class="overlay__switch__content">
+					<img src="public/arrows.svg" style="transform:rotate(180deg);width:40px">
+				</div>
+			</div>
+
+			<div id="map_wrapper" style="height:100%">
+				{% include './places/places__map.twig' %}
+			</div>
+
+			{% include './places/places__search.twig' ignore missing %}
+
+			{% if userLogged %}
+
+				<style type="text/css">
+					@media (max-width: 750px) {
+						.new_place__trigger > img { display: none }
+						.new_place__trigger { top: 15px; bottom: 0 !important; height: 50px; border: 1px #cf2a26 solid; }
+					}
+				</style>
+
+				{% include './places/places__new_place_modal.twig' %}
+
+				<div class="new_place__trigger" 
+				     onclick="FMP.layout.showModal('new_place__modal')">
+					<span>add new place</span>
+					<img src="public/pin_map.svg">
+				</div>
+
+			{% endif %}
+
+		</section>
+
+	</div>
+
+	<div class="place__modal" style="overflow-y:scroll" id="place__modal">
+		{% include './places/places__place_modal.twig' ignore missing %}
+	</div>
+
+</main>
+
+{% endblock %}

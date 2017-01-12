@@ -1,0 +1,14 @@
+<google-map latitude="{{ map.latitude }}" 
+			            longitude="{{ map.longitude }}" 
+		                styles="{{ map.style }}"
+			            api-key="{{ map.api }}" 
+			            id="main_map"
+			            zoom="{{ map.zoom }}" fit-to-markers disable-default-ui>
+
+	{% if is_async %}
+		{% include './places__markers.twig' ignore missing %}
+	{% else %}
+		{% include './places/places__markers.twig' ignore missing %}
+	{% endif %}
+
+</google-map>

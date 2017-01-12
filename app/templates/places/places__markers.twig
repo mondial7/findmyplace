@@ -1,0 +1,28 @@
+{% for place in places %}
+			
+	<style type="text/css">
+	
+	@media (max-width: 750px) {
+	
+		.marker__pic {
+			display: none
+		}
+	
+	}
+	
+	</style>
+
+  	<google-map-marker latitude="{{ place.latitude }}" 
+  	                   longitude="{{ place.longitude }}"
+	 				   icon="public/pin_map.svg"
+	 				   title="{{ place.address }}">
+		
+		<img class="marker__pic" alt="place photo" src="public/{{ place.image|default('home.svg') }}">
+		<div class="marker__address">
+			<p>{{ place.address }}</p>
+			<p class="marker__more"><span onclick="FMP.places.showPlace({{ place.id }})">More info...</span></p>
+		</div>
+
+    </google-map-marker>
+
+{% endfor %}

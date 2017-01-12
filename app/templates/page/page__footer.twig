@@ -1,0 +1,19 @@
+<footer class="footer">
+	
+	<div class="footer__separator"></div>
+
+	<p class="footer__links">
+
+		{% for link in footer_links %}
+			<a class="footer__link" href="{{ link.href }}" target="_blank">{{ link.label }}</a>
+		{% endfor %}
+
+	</p>
+
+	<p style="padding:0 10px">&copy; {{ now|date('Y') }} Find My Place. All Rights Reserved</p>
+
+</footer>
+
+{% for src in footer_scripts %}
+	<script src="{{ src }}"></script>
+{% endfor %}

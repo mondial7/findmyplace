@@ -1,0 +1,17 @@
+{% extends 'page__base.twig' %}
+
+{% block main %}
+
+<main style="position:relative;z-index:1;margin-bottom:80px">
+	
+	<h1>Register</h1>
+
+	<section style="margin-bottom: 0px !important">
+
+		{% include './register/register__form.twig' ignore missing %}
+
+	</section>
+
+</main>
+
+{% endblock %}

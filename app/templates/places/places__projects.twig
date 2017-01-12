@@ -1,0 +1,15 @@
+{% for project in projects %}
+	
+	<div class="place_project {% if project.account_id == sess.id %}my_project{% endif %}" id="project__{{ project.id }}">
+	
+		<p id="project_cont__{{ project.id }}"><span>{{ project.title|raw }}</span>{{ project.about|raw }}</p>
+
+		{% if project.account_id == sess.id %}
+		
+		<span class="project_delete__btn" data-project="{{ project.id }}">delete</span>
+		
+		{% endif %}
+	
+	</div>
+
+{% endfor %}

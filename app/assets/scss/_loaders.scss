@@ -1,0 +1,123 @@
+
+/* Small on spot loader */
+
+$tiny-loader-size: 50%;
+$tiny-loader-line-size: 2px;
+$tiny-loader-loop-time: 0.7s;
+$tiny-loader-background: rgba(255,255,255,0.9);
+
+@mixin tiny_loader($size, $line-size, $loop-time){
+	position: absolute;
+	top:0; left:0;
+	width: 100%;
+	height: 100%;
+	background-color: $tiny-loader-background;
+
+	> div {
+		position: absolute;
+		top: calc(50% - #{$size/2});
+        left: calc(50% - #{$size/2});
+		width: $size;
+		height: $size;
+        max-width: 50px;
+        max-height: 50px;
+		@include border-radius(50%);
+	}
+
+	> div:first-child {
+		border-left: $line-size solid $logo-red;
+		animation: load_rotate $loop-time infinite linear;
+	}
+
+	> div:last-child {
+		border-right: #{$line-size - 1} solid $logo-brown;
+		animation: load_rotate #{$loop-time*1.5} infinite linear reverse;
+	}
+}
+
+.tiny_loader {
+	@include tiny_loader($tiny-loader-size, $tiny-loader-line-size, $tiny-loader-loop-time);
+}
+
+/* Full screen loader */
+
+
+#loading_screen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    padding-top: 100px;
+    /*background: $header-background;*/
+    text-align: center;
+    z-index: 9999999999;
+}
+
+#loading_circle {
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin-top: 20%;
+    text-align: left;
+    background-color: #555;
+    animation: load_rotate 2s infinite linear;
+    overflow: visible;
+}
+
+.loading_ball {
+    position: absolute;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: #fa8;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+}
+
+#loading_ball1 {
+    left: 30px;
+    animation: ball_move1 2s infinite linear;
+}
+#loading_ball2 {
+    left: 60px;
+    top: 30px;
+    animation: ball_move2 2s infinite linear;
+}
+#loading_ball3 {
+    top: 60px;
+    left: 30px;
+    animation: ball_move3 2s infinite linear;
+}
+#loading_ball4 {
+    top: 30px;
+    animation: ball_move4 2s infinite linear;
+}
+
+@keyframes load_rotate {
+   @include rotate();
+   50% {}
+}
+
+@keyframes ball_move1 {
+    from {transform: translateY(0px);}
+    50% {transform: translateY(-40px);background-color: #555}
+    to {transform: translateY(0px);}
+}
+
+@keyframes ball_move2 {
+    from {transform: translateX(0px);}
+    50% {transform: translateX(40px);background-color: #555}
+    to {transform: translateX(0px);}
+}
+
+@keyframes ball_move3 {
+    from {transform: translateY(0px);}
+    50% {transform: translateY(40px);background-color: #555}
+    to {transform: translateY(0px);}
+}
+
+@keyframes ball_move4 {
+    from {transform: translateX(0px);}
+    50% {transform: translateX(-40px);background-color: #555}
+    to {transform: translateX(0px);}
+}

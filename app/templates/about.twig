@@ -1,0 +1,29 @@
+{% extends 'page__base.twig' %}
+
+{% block main %}
+
+<style>
+	iframe {
+		display:block;
+		margin: auto;
+		width: 100%;
+		max-width: 1200px;
+		height: calc(100% - 80px);
+	}
+	footer {
+		z-index: -1;
+	}
+	main {
+		z-index: 1
+	}
+</style>
+
+<main>
+
+	<section style="padding: 20px;height: 100%;">
+		<iframe src="//slides.com/sabi123456789/deck/embed?style=light" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+	</section>
+
+</main>
+
+{% endblock %}

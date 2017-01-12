@@ -1,0 +1,68 @@
+<style type="text/css">
+.form_register { display: block; max-width: 400px }
+.form_register li { list-style: none; margin-top: 20px; display: block }
+.form_register input { vertical-align: middle; border: 1px solid #000; }
+.form_register label { line-height: 35px; display: inline-block; }
+.form_register input[type=email],
+.form_register input[type=text],
+.form_register input[type=password] { height: 35px; line-height: 35px; padding: 0px 5px }
+.form_register input[type=submit] { background-color: #fff; border: 1px solid #cf2a26; color: #cf2a26; transition: all 300ms; padding: 5px 10px }
+.form_register input[type=submit]:hover { background-color: #cf2a26; color: #fff }
+.form_register li.form_footer { margin-top: 50px }
+.form_register li.form_footer a { color: black }
+</style>
+
+<form action="{{ form_action|default('') }}" method="post" class="form_register">
+
+    {% if error_message and error_message != "" %}
+        <li>
+            <p>{{ error_message }}</p>
+        </li>
+    {% endif %}
+    
+    <li>
+        <input type="email" name="email" placeholder="Email" value="{{ placeholder.email }}" required/>
+    </li>
+
+    <li>
+        <input type="text" name="username" placeholder="Username" value="{{ placeholder.username }}" required/>
+    </li>
+
+    <li>
+        <input type="password" id="password_input_1" name="password" placeholder="Password" required/>
+    </li>
+
+    <li>
+        <input id="password_input_2" type="password" name="password_check"  placeholder="Repeat Password" required/>
+    </li>
+
+    <li>
+        <input type="submit" value="Register" name="submit">
+    </li>
+
+    <li class="form_footer">
+        <p>Do you already have an Account? <a href="login/">Login</a></p>
+    </li>
+
+</form>
+
+<script type="text/javascript">
+// checks and ajaxs on register form
+
+// combine this in findmyplace.js
+
+/*
+function checkUsername(name) {
+
+    var regex = /^[A-Za-z0-9]+$/;
+
+    if (!regex.test(name)) {
+
+        return false;
+
+    }
+
+    return true;
+
+}*/
+</script>

@@ -1,0 +1,44 @@
+
+footer,
+.footer {
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	width: 100%;
+	padding: 5px 0px;
+	height: auto;
+	overflow: hidden;
+	z-index: 0;
+
+	&__separator {
+		height: 1px;
+		background-color: #d7d7cc;
+	}
+
+	&__links {
+		/*text-align: justify;*/
+		margin: 0px;
+		height: auto;
+		overflow: hidden;
+		line-height: 27px;
+		padding: 5px $page-lateral-padding;
+
+
+		/*
+		&:after{
+		  content: "";
+		  width: 100%;
+		  display: inline-block;
+		}*/
+
+	}
+
+	&__link,
+	span {
+		display: inline-block;
+		color: #333;
+		padding: 10px 20px 10px 0px;
+		text-decoration: none
+	}
+
+}

@@ -1,0 +1,24 @@
+{% import './components/form_elements.twig' as nodes %}
+
+{% extends 'page__base.twig' %}
+
+{% block main %}
+
+<main>
+	<section>
+		
+		<h1>Contacts</h1>
+
+		<p id="email_error_message"></p>
+
+		<form>
+			<input type="text" name="fullname" placeholder="Your name">
+			<input type="email" name="email" placeholder="Your email" required>
+			<textarea name="message" placeholder="Your message" required></textarea>
+			<input type="submit" name="submit_email" value="Send">
+		</form>
+
+	</section>
+</main>
+
+{% endblock %}
